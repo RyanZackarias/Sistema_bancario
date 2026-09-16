@@ -27,7 +27,7 @@
         <div class="card shadow mb-4 text-center">
             <div class="card-body">
                 <h5 class="text-muted">Su saldo actual disponible es:</h5>
-                <h1 class="display-4 text-success fw-bold">$<?= number_format($datos['saldo'], 2) ?></h1>
+                <h1 class="display-4 text-success fw-bold">S/<?= number_format($datos['saldo'], 2) ?></h1>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                         <form method="POST">
                             <input type="hidden" name="accion" value="depositar">
                             <div class="mb-3">
-                                <label class="form-label">Monto a depositar ($):</label>
+                                <label class="form-label">Monto a depositar (S/):</label>
                                 <input type="number" step="0.01" name="monto" class="form-control" placeholder="0.00" required>
                             </div>
                             <button type="submit" class="btn btn-success w-100">Depositar</button>
@@ -60,7 +60,7 @@
                         <form method="POST">
                             <input type="hidden" name="accion" value="retirar">
                             <div class="mb-3">
-                                <label class="form-label">Monto a retirar ($):</label>
+                                <label class="form-label">Monto a retirar (S/):</label>
                                 <input type="number" step="0.01" name="monto" class="form-control" placeholder="0.00" required>
                             </div>
                             <button type="submit" class="btn btn-danger w-100">Retirar</button>
@@ -92,7 +92,7 @@
                                     <tr>
                                         <td><?= $deposito['id'] ?></td>
                                         <td><?= htmlspecialchars($deposito['titular']) ?></td>
-                                        <td><span class="text-success fw-bold">+$<?= number_format($deposito['monto'], 2) ?></span></td>
+                                        <td><span class="text-success fw-bold"><?= "+S/ " . number_format($deposito['monto'], 2) ?></span></td>
                                         <td><?= $deposito['fecha'] ?></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -129,7 +129,7 @@
                                     <tr>
                                         <td><?= $retiro['id'] ?></td>
                                         <td><?= htmlspecialchars($retiro['titular']) ?></td>
-                                        <td><span class="text-danger fw-bold">-$<?= number_format($retiro['monto'], 2) ?></span></td>
+                                        <td><span class="text-danger fw-bold"><?= "-S/ " . number_format($retiro['monto'], 2) ?></span></td>
                                         <td><?= $retiro['fecha'] ?></td>
                                     </tr>
                                 <?php endforeach; ?>
