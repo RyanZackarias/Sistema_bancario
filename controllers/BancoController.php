@@ -107,12 +107,16 @@ class BancoController {
         $stmtRefresh->execute();
         $saldoActual = $stmtRefresh->get_result()->fetch_assoc()['saldo'];
 
-        // Obtener historiales independientes
-        $historialRetiros = $db->query("SELECT * FROM retiros_historial ORDER BY fecha DESC");
-        $retiros = $historialRetiros ? $historialRetiros->fetch_all(MYSQLI_ASSOC) : [];
+        // Obtener historiales independientes filtrados por el titular actual
+        $stmtRetiros = $db->prepare("SELECT * FROM retiros_historial WHERE titular = ? ORDER BY fecha DESC");
+        $stmtRetiros->bind_param("s", $_SESSION['titular']);
+        $stmtRetiros->execute();
+        $retiros = $stmtRetiros->get_result()->fetch_all(MYSQLI_ASSOC);
 
-        $historialDepositos = $db->query("SELECT * FROM depositos_historial ORDER BY fecha DESC");
-        $depositos = $historialDepositos ? $historialDepositos->fetch_all(MYSQLI_ASSOC) : [];
+        $stmtDepositos = $db->prepare("SELECT * FROM depositos_historial WHERE titular = ? ORDER BY fecha DESC");
+        $stmtDepositos->bind_param("s", $_SESSION['titular']);
+        $stmtDepositos->execute();
+        $depositos = $stmtDepositos->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return [
             'titular' => $_SESSION['titular'],
