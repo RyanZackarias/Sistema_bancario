@@ -8,12 +8,12 @@ require_once __DIR__ . '/CuentaBancaria.php';
  */
 class CuentaAhorros extends CuentaBancaria {
     
-    /**
-     * POLIMORFISMO:
-     * Aqui sobrescribimos ('override') el metodo abstracto retirar() 
-     * adaptandolo especificamente para las reglas de una cuenta de ahorros 
-     * (por ejemplo, tiene un limite estricto de retiro de hasta $1000).
-     */
+/**
+* POLIMORFISMO:
+* Aqui sobrescribimos ('override') el metodo abstracto retirar() 
+* adaptandolo especificamente para las reglas de una cuenta de ahorros 
+* por ejemplo, tiene un limite estricto de retiro de hasta $1000.
+*/
     public function retirar(float $monto): bool {
         if ($monto <= 1000.00 && $this->getSaldo() >= $monto) {
             $this->ajustarSaldo(-$monto);

@@ -21,7 +21,7 @@ class BancoController {
             $stmt->bind_param("s", $titular);
             $stmt->execute();
             $res = $stmt->get_result();
-
+            
             if ($row = $res->fetch_assoc()) {
                 if ($row['password'] === $password) {
                     $_SESSION['id'] = $row['id'];
@@ -107,7 +107,7 @@ class BancoController {
         $stmtRefresh->execute();
         $saldoActual = $stmtRefresh->get_result()->fetch_assoc()['saldo'];
 
-        // Obtener historiales independientes filtrados por el titular actual
+// Obtener historiales independientes filtrados por el titular actual
         $stmtRetiros = $db->prepare("SELECT * FROM retiros_historial WHERE titular = ? ORDER BY fecha DESC");
         $stmtRetiros->bind_param("s", $_SESSION['titular']);
         $stmtRetiros->execute();

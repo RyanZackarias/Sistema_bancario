@@ -70,6 +70,46 @@
             </div>
         </div>
 
+        <!-- Sección de Exportación de Historiales por Fecha -->
+<div class="card shadow mb-4">
+    <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">Exportar Historial (PDF / Excel)</h5>
+    </div>
+    <div class="card-body">
+        <form action="exportar.php" method="GET" class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Tipo de Historial:</label>
+                <select name="tipo_tabla" class="form-select" required>
+                    <option value="depositos">Depósitos</option>
+                    <option value="retiros">Retiros</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold">Filtrar por:</label>
+                <select name="filtro" class="form-select" id="filtroSeleccion" required>
+                    <option value="mes">Mes Específico</option>
+                    <option value="semana">Semana Actual / Reciente</option>
+                    <option value="anio">Año Específico</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold">Valor (Ej: 2026 o 01):</label>
+                <input type="text" name="valor" class="form-control" placeholder="Mes(01-12) o Año" required>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold">Formato:</label>
+                <select name="formato" class="form-select" required>
+                    <option value="pdf">PDF (Dompdf)</option>
+                    <option value="excel">Excel (Spreadsheet)</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-dark w-100">Exportar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
         <!-- Historial de Depósitos -->
         <div class="card shadow mb-4">
             <div class="card-header bg-success text-white">

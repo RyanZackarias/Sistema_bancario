@@ -1,6 +1,6 @@
 <?php
 /**
- * CLASE ABSTRACTA (POO - Abstraccion):
+ * CLASE ABSTRACTA 
  * Sirve como una plantilla general. No se puede instanciar directamente, 
  * obliga a las clases hijas a implementar sus propias reglas de negocio.
  */
@@ -8,12 +8,12 @@ abstract class CuentaBancaria {
     protected int $id;
     protected string $titular;
     
-    /**
-     * ENCAPSULAMIENTO:
-     * La propiedad '$saldo' es 'private', lo que significa que el saldo 
-     * no puede ser modificado directamente desde afuera (ej. $cuenta->saldo = 1000),
-     * protegiendo los datos de alteraciones incorrectas.
-     */
+/**
+* ENCAPSULAMIENTO:
+* La propiedad '$saldo' es 'private', lo que significa que el saldo 
+* no puede ser modificado directamente desde afuera (ej. $cuenta->saldo = 1000),
+* protegiendo los datos de alteraciones incorrectas.
+*/
     private float $saldo; 
 
     public function __construct(int $id, string $titular, float $saldo) {
@@ -33,7 +33,7 @@ abstract class CuentaBancaria {
     }
 
     /**
-     * MeTODO ABSTRACTO:
+     * METODO ABSTRACTO:
      * Obliga a cualquier tipo de cuenta hija a escribir su propia 
      * logica de validacion para el retiro.
      */
