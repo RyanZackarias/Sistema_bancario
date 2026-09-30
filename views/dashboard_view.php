@@ -93,7 +93,7 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <label class="form-label fw-bold">Valor (Ej: 2026 o 01):</label>
+                <label class="form-label fw-bold">Valor </label>
                 <input type="text" name="valor" class="form-control" placeholder="Mes(01-12) o Año" required>
             </div>
             <div class="col-md-2">
